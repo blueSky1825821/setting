@@ -1,0 +1,34 @@
+########terminal启动页欢迎古诗词###########
+#方式一 start
+#双引号中字符串截取
+strCut(){
+    str=$1
+    end=${#str}-1
+    len=${#str}-2
+    substr=${str:2-$end:$len}
+    echo $substr
+}
+#需要安装json工具jq
+#poetry=`curl -s 'https://api.gushi.ci/all.json' 2>/dev/null`
+#if [ $? -ne 0 ]; then
+#    echo "\033[1;31m 没有网络，怎么拯救世界！！！ \033[0m"
+#else
+#    content=`echo $poetry | jq ".|.content"`
+#    origin=`echo $poetry | jq ".|.origin"`
+#    origin1=$(strCut $origin)
+#    author=`echo $poetry | jq ".|.author"`
+#    author1=$(strCut $author)
+#    echo "\033[1;32m $content \033[0m"
+#    echo "\033[1;32m            < $origin1>  \033[0m"
+#    echo "\033[1;32m            ------$author1 \033[0m"
+#fi
+#方式一 end
+
+#方式二 start
+poetry=`curl -s http://gxy.me/shici 2>/dev/null`
+if [ $? -ne 0 ]; then
+    echo "\033[1;31m 没有网络，怎么拯救世界！！！ \033[0m"
+else
+    echo "\033[1;32m $poetry \033[0m"
+fi
+#方式二 end
